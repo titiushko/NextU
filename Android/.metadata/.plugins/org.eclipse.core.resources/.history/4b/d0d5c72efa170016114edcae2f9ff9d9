@@ -1,0 +1,21 @@
+package Actividad03_10;
+
+import Actividad03_04.Producto;
+
+import java.io.PrintStream;
+import java.util.Scanner;;
+
+public class PruebaProducto {
+	public static void main(String[] args) {
+		Producto producto = new Producto();
+		Scanner teclado = new Scanner(System.in);
+		PrintStream consola = System.out;
+		
+		consola.println("Datos Producto");
+		consola.println("Codigo:"); producto.setCodigo(teclado.nextInt());
+		consola.println("Nombre:"); producto.setNombre(teclado.nextLine());
+		consola.println("Descripcion:"); producto.setDescripcion(teclado.nextLine());
+		consola.println("Valor:"); producto.setValor(teclado.nextDouble());
+		consola.println("Cantidad:"); producto.setCantidad(teclado.nextInt());
+	}
+}

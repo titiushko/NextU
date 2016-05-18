@@ -1,0 +1,14 @@
+package Actividad03_10;
+
+import Actividad03_04.Producto;
+import java.util.Scanner;;
+
+public class PruebaProducto {
+	public static void main(String[] args) {
+		Producto tv = new Producto();
+		Scanner teclado = new Scanner(System.in);
+		
+		tv.setCodigo(1);
+		tv.setNombre("TV Samsung");
+	}
+}

@@ -1,0 +1,6 @@
+package Actividad03_04;
+public class ValidarEdad {
+	public static void main(String[] args) {
+		
+	}
+}

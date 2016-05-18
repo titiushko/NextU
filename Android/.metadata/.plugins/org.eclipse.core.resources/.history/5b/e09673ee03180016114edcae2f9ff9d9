@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Actividad02_04 {
+
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		
+		// 1
+		System.out.println("EJERCICIO 1");
+		int numero1;
+		System.out.println("Número 1:"); numero1 = teclado.nextInt();
+		
+		for (int i = numero1; i <= 0; i--) {
+			
+		}
+	}
+
+}

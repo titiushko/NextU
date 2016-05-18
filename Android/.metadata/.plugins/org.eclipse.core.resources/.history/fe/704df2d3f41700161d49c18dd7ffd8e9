@@ -1,0 +1,7 @@
+package ActividadDeCodigo34;
+
+public class Animal {
+	String nombre;
+	String clase;
+	int numeroPatas;
+}

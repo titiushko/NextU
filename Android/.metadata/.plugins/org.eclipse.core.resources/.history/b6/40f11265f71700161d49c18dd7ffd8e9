@@ -1,0 +1,11 @@
+package Actividad38;
+
+public class PruebaMath {
+	public static void main(String[] args) {
+		double a = 50;	//longitud
+		double R = 25;	//radio
+		double h = 150;	//altura
+		
+		System.out.printf("Volumen de un cubo de longitud %.2f:", Math.pow(a, 3));
+	}
+}

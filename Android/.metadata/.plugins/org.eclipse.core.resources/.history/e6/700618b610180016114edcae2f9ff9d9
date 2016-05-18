@@ -1,0 +1,5 @@
+package Actividad03_04;
+
+public class ValidarEdad {
+	public int edad;
+}

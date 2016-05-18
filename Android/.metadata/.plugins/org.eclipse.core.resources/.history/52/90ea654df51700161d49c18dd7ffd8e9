@@ -1,0 +1,12 @@
+package Actividad36;
+
+public class Estudiante {
+	String codigo;
+	String nombre;
+	String apellido;
+	String curso;
+	
+	public void hacerExamen() {
+		
+	}
+}

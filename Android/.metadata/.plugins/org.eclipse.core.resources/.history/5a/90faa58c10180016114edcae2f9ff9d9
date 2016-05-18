@@ -1,0 +1,8 @@
+package Actividad03_04;
+
+public class Empresa {
+	String nit;
+	String nombre;
+	String direccion;
+	int telefono;
+}

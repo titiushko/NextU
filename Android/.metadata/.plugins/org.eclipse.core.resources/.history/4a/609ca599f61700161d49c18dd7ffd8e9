@@ -1,0 +1,8 @@
+package Actividad38;
+import Actividad36.Estudiante;
+
+public class PruebaMath {
+	public static void main(String[] args) {
+		
+	}
+}
