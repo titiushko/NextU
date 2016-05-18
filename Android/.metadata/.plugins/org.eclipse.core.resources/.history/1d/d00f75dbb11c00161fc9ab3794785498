@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Actividad03_04 {
+	public static long serieFibonaci(long n) {
+		System.out.printf("%d, ", n);
+		if (n == 0 || n == 1) {
+			return n;
+		}
+		else {
+			return serieFibonaci(n - 1) + serieFibonaci(n - 2);
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int numero;
+		
+		System.out.println("Número: "); numero = teclado.nextInt();
+		//System.out.printf("La suma de 1 hasta %d es = ", numero);
+		System.out.println(serieFibonaci(numero));
+		
+		teclado.close();
+	}
+}

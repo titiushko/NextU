@@ -1,0 +1,18 @@
+package Actividad03_02;
+
+import java.util.Scanner;
+
+public class SumaDeNumeros {
+	public int SumaNumeros(int n) {
+		if (n == 1) {
+			return n;
+		}
+		else {
+			return n + SumaNumeros(n - 1);
+		}
+	}
+	
+	public static void mian(String[] args) {
+		Scanner tecladp = new Scanner(System.in);
+	}
+}

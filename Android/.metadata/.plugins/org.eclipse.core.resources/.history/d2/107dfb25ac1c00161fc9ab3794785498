@@ -1,0 +1,10 @@
+package Actividad02_02;
+
+public class CrearVehiculo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

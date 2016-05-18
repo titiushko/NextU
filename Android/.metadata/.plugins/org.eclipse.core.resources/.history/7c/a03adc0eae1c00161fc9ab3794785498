@@ -1,0 +1,22 @@
+package Actividad03_02;
+
+import java.util.Scanner;
+
+public class SumaDeNumeros {
+	public static int SumaNumeros(int n) {
+		if (n == 1) {
+			return n;
+		}
+		else {
+			return n + SumaNumeros(n - 1);
+		}
+	}
+	
+	public static void mian(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int numero;
+		
+		System.out.println("Número :"); numero = teclado.nextInt();
+		System.out.printf("La suma del número es = %d", SumaNumeros(numero));
+	}
+}

@@ -1,0 +1,12 @@
+package Actividad03_02;
+
+public class SumaDeNumeros {
+	public int SumaNumeros(int n) {
+		if (n == 1) {
+			return n;
+		}
+		else {
+			return n + SumaNumeros(n - 1);
+		}
+	}
+}
