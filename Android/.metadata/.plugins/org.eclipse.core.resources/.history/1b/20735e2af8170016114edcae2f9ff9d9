@@ -1,9 +1,0 @@
-package Actividad34;
-
-public class Producto {
-	int codigo;
-	String nombre;
-	String descripcion;
-	double valor;
-	int cantidad;
-}

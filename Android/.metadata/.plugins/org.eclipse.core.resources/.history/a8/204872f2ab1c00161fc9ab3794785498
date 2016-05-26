@@ -1,9 +1,0 @@
-package Actividad02_02;
-
-public class Buseta extends Automovil {
-
-	public Buseta() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

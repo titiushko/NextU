@@ -1,7 +1,0 @@
-package Actividad03_04;
-
-public class Animal {
-	String nombre;
-	String clase;
-	int numeroPatas;
-}

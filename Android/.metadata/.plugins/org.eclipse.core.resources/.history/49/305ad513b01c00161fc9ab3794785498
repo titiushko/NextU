@@ -1,9 +1,0 @@
-public class Actividad03_04 {
-	public static int serieFibonaci() {
-		
-	}
-	
-	public static void main(String[] args) {
-		
-	}
-}

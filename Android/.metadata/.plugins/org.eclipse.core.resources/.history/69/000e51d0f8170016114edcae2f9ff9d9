@@ -1,8 +1,0 @@
-package Actividad34;
-
-public class Empresa {
-	String nit;
-	String nombre;
-	String direccion;
-	int telefono;
-}
