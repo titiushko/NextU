@@ -1,0 +1,10 @@
+package Actividad02_04;
+
+public class BuscarDato {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

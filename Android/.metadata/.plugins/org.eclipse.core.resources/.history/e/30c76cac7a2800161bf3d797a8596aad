@@ -1,0 +1,58 @@
+package Actividad03_07;
+
+public class Cola {
+
+	Nodo tope, ultimo;
+
+	Cola() {
+		tope = null;
+		ultimo = null;
+	}
+
+	public boolean vacia() {
+		if (tope == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void insertar(int valor) {
+		Nodo nuevo;
+		nuevo = new Nodo();
+		nuevo.valor = valor;
+		nuevo.siguiente = null;
+		if (vacia()) {
+			tope = nuevo;
+			ultimo = nuevo;
+		} else {
+			ultimo.siguiente = nuevo;
+			ultimo = nuevo;
+		}
+	}
+
+	public int eliminar() {
+		if (!vacia()) {
+			int dato = tope.valor;
+			if (tope == ultimo) {
+				tope = null;
+				ultimo = null;
+			} else {
+				tope = tope.siguiente;
+			}
+			return dato;
+		} else {
+			return Integer.MAX_VALUE;
+		}
+	}
+
+	public void mostrar() {
+		Nodo recorrer = tope;
+		System.out.println("Los nodos de la Cola son: ");
+		while (recorrer != null) {
+			System.out.print("|" + recorrer.valor + "|");
+			recorrer = recorrer.siguiente;
+		}
+		System.out.println();
+	}
+}

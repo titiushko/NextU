@@ -1,0 +1,72 @@
+package Actividad02_06;
+
+import java.util.Random;
+
+public class OrdenamientoSeleccion {
+	private int[] valores;
+	private static Random numeros_aleatorios = new Random();
+
+	public OrdenamientoSeleccion(int elementos) {
+		valores = new int[cantidad_elementos];
+
+		for (int i = 0; i < cantidad_elementos; i++) {
+			valores[i] = 10 + numeros_aleatorios.nextInt(90);
+		}
+	}
+
+	// Ordena el arreglo con el ordenamiento Seleccion
+	public void ordenar() {
+		int menor;
+
+		for (int i = 0; i < valores.length - 1; i++) {
+			menor = i;
+
+			// Buscar el valor
+			for (int indice = i + 1; indice < valores.length; indice++)
+				if (valores[indice] < valores[menor])
+					menor = indice;
+
+			intercambiarNumero(i, menor);
+
+			imprimirIteracion(i + 1, menor);
+		}
+	}
+
+	// Metdo para el intercambio
+	public void intercambiarNumero(int primero, int segundo) {
+		int anterior = valores[primero];
+		valores[primero] = valores[segundo];
+		valores[segundo] = anterior;
+	} // fin del método intercambiarNumero
+
+	// Imprime la iteracion
+	public void imprimirIteracion(int iteracion, int indice) {
+
+		// Muestra el selecionado
+		for (int i = 0; i < indice; i++)
+			System.out.print(valores[i] + " ");
+
+		System.out.print(valores[indice] + "* "); // Muestra el Cambio
+
+		for (int i = indice + 1; i < valores.length; i++)
+			System.out.print(valores[i] + " ");
+
+		System.out.print("\n ");
+
+		for (int j = 0; j < iteracion; j++)
+			System.out.print(" ");
+		System.out.println("\n");
+	}
+
+	// Imprimir valores
+	public String toString() {
+		StringBuilder anterior = new StringBuilder();
+
+		// Iteraciones del arreglo
+		for (int elemento : valores)
+			anterior.append(elemento + " ");
+
+		anterior.append("\n");
+		return anterior.toString();
+	}
+}

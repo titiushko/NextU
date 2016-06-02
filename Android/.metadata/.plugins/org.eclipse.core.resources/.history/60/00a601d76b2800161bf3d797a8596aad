@@ -1,0 +1,31 @@
+package Actividad02_04;
+
+import java.util.Scanner;
+
+public class BuscarDato {
+	public static void main(String args[]) {
+		Scanner dato = new Scanner(System.in);
+		int indice;
+		int posicion;
+
+		BusquedaBinaria arreglo = new BusquedaBinaria(15);
+		System.out.println(arreglo);
+
+		System.out.print("Escriba el numero que desea buscar Buscar: ");
+		indice = dato.nextInt(); // toma un entero del usuario
+		System.out.println();
+
+		while (indice != -1) {
+
+			posicion = arreglo.busquedaBinaria(indice);
+
+			if (posicion == -1)
+				System.out.println("El entero " + indice + " no se encontro.\n");
+			else
+				System.out.println("El entero " + indice + " se encontro en la posicion " + posicion + ".\n");
+
+			indice = dato.nextInt();
+			System.out.println();
+		}
+	}
+}

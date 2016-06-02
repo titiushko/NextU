@@ -1,0 +1,65 @@
+package Actividad02_04;
+
+import java.util.Random;
+import java.util.Arrays;
+
+public class BusquedaBinaria {
+	private int[] valores;
+	private static Random numeros_aleatorios = new Random();
+
+	public BusquedaBinaria(int cantidad_elementos) {
+		valores = new int[cantidad_elementos];
+
+		for (int i = 0; i < cantidad_elementos; i++) {
+			valores[i] = 10 + numeros_aleatorios.nextInt(90);
+		}
+
+		Arrays.sort(valores);
+	}
+
+	// hacemos el metodo de busqueda
+	public int busquedaBinaria(int datoBusqueda) {
+		int inicial = 0;
+		int longitud = valores.length - 1;
+		int medio = (inicial + longitud + 1) / 2;
+		int posicion = -1;
+
+		do {
+
+			System.out.print(Restantes(inicial, longitud));
+
+			for (int i = 0; i < medio; i++)
+				System.out.print(" ");
+			System.out.println(" * "); // s
+
+			if (datoBusqueda == valores[medio])
+				posicion = medio;
+
+			else if (datoBusqueda < valores[medio])
+				longitud = medio - 1; // elimina la mitad
+			else // el elemento medio es demasiado bajo
+				inicial = medio + 1; // elimina la mitad inicial
+
+			medio = (inicial + longitud + 1) / 2; // recalcula el elemento medio
+		} while ((inicial <= longitud) && (posicion == -1));
+
+		return posicion;
+	}
+
+	public String Restantes(int inicial, int longitud) {
+		StringBuilder temporal = new StringBuilder();
+
+		for (int i = 0; i < inicial; i++)
+			temporal.append(" ");
+
+		for (int i = inicial; i <= longitud; i++)
+			temporal.append(valores[i] + " ");
+
+		temporal.append("\n");
+		return temporal.toString();
+	}
+
+	public String toString() {
+		return Restantes(0, valores.length - 1);
+	}
+}

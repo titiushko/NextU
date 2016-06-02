@@ -1,0 +1,17 @@
+package Actividad02_06;
+
+public class MostrarOrdenamiento {
+public static void main( String[] args )
+{
+
+OrdenamientoSeleccion arregloOrdenado = new OrdenamientoSeleccion( 10 );
+
+System.out.println( "Arreglo Inicial:" );
+System.out.println( arregloOrdenado ); //Mostrar Arreglo inicial
+
+arregloOrdenado.ordenar(); // Ordena Arreglo
+
+System.out.println( "Arreglo Ordenado:");
+System.out.println( arregloOrdenado ); // Imprime Arreglo Ordenado
+} // fin de main
+}

@@ -1,0 +1,85 @@
+package Actividad02_06;
+
+public class OrdenamientoSeleccion {
+private int[] valores; // Arreglo de valores
+
+
+public OrdenamientoSeleccion( int elementos )
+{
+valores = new int[ 10 ]; // Tamaño del arreglo
+valores[0] = 1;
+valores[1] = 13;
+valores[2] = 11;
+valores[3] = 4;
+valores[4] = 5;
+valores[5] = 15;
+valores[6] = 7;
+valores[7] = 8;
+valores[8] = 9;
+valores[9] = 0;
+
+} 
+
+// Ordena el arreglo con el ordenamiento Seleccion
+public void ordenar()
+{
+int menor; 
+
+for ( int i = 0; i < valores.length - 1; i++ )
+{
+menor = i; 
+
+// Buscar el valor 
+for ( int indice = i + 1; indice < valores.length; indice++ )
+if ( valores[ indice ] < valores[ menor ] )
+menor = indice;
+
+intercambiarNumero( i, menor ); 
+
+imprimirIteracion( i + 1, menor ); 
+} 
+} 
+
+//Metdo para el intercambio
+public void intercambiarNumero( int primero, int segundo )
+{
+int anterior = valores[ primero ]; 
+valores[ primero ] = valores[ segundo ]; 
+valores[ segundo ] = anterior; 
+} // fin del método intercambiarNumero
+
+// Imprime la iteracion
+public void imprimirIteracion( int iteracion, int indice )
+{
+
+// Muestra el selecionado
+for ( int i = 0; i < indice; i++ )
+System.out.print( valores[ i ] + " " );
+
+System.out.print( valores[ indice ] + "* " ); // Muestra el Cambio
+
+
+for ( int i = indice + 1; i < valores.length; i++ )
+System.out.print( valores[ i ] + " " );
+
+System.out.print( "\n " ); 
+
+
+for( int j = 0; j < iteracion; j++ )
+System.out.print( " " );
+System.out.println( "\n" ); 
+} 
+
+//Imprimir valores
+public String toString()
+{
+StringBuilder anterior = new StringBuilder();
+
+// Iteraciones del arreglo
+for ( int elemento : valores )
+anterior.append( elemento + " " );
+
+anterior.append( "\n" ); 
+return anterior.toString();
+} 
+}

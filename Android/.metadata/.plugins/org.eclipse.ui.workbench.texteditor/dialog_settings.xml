@@ -2,16 +2,18 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="factorial" key="selection"/>
+		<item value="vacia" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="listaVacia"/>
 			<item value="sumaNumeros"/>
 			<item value="Fibonaci"/>
 		</list>
 		<list key="replacehistory">
+			<item value="vacia"/>
 			<item value="factorial"/>
 			<item value="Fibonacci"/>
 		</list>

@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Actividad02_02 {
+	public static void main(String[] args) {
+		Scanner teclado = new Scanner(System.in);
+		int numero;
+		int vector[] = {4, 1, 3, 14, 6, 8, 9, 12, 7, 6};
+		
+		System.out.print("Número a buscar: "); numero = teclado.nextInt();
+		for (int i = 0; i < vector.length; i++) {
+			if (vector[i] == numero) {
+				System.out.printf("\nEl número %d se encuentra en la posición %d.\n", numero, i);
+			}
+		}
+		
+		for (int i = 0; i < vector.length; i++) {
+			System.out.printf("vector[%d] = %d\n", i, vector[i]);
+		}
+		
+		teclado.close();
+	}
+
+}
