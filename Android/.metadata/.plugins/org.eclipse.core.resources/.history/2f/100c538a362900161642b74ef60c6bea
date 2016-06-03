@@ -1,0 +1,18 @@
+package entidades;
+
+import java.util.Date;
+
+/**
+*
+* @author titiushko
+*/
+public class Actividad {
+	private int codigo;
+	private String descripcion;
+	private String tipo;
+	private Date fecha;
+	private int codigoOrganizacion;
+	private int codigoPersona;
+	private double valor;
+	private boolean estado;
+}

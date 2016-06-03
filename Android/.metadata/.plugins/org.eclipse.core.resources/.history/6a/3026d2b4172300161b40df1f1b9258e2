@@ -1,9 +1,0 @@
-import java.util.Iterator;
-import java.util.LinkedList;
-
-
-public class Actividad05_4 {
-	public static void main(String[] args) {
-		LinkedList<String> animales = new LinkedList<String>();
-	}
-}

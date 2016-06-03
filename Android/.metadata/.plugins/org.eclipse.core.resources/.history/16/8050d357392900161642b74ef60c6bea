@@ -1,0 +1,87 @@
+package entidades;
+
+import java.util.Date;
+
+import herramientas.Validaciones;
+
+/**
+*
+* @author titiushko
+*/
+public class Negocio extends Validaciones {
+	private int codigo;
+	private String titulo;
+	private String descripcion;
+	private int codigoOrganizacion;
+	private int codigoPersona;
+	private double valor;
+	private Date fechaEstimadaCierre;
+	private boolean estado;
+	
+	public int getCodigo() {
+		return codigo;
+	}
+	
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	public int getCodigoOrganizacion() {
+		return codigoOrganizacion;
+	}
+	
+	public void setCodigoOrganizacion(int codigoOrganizacion) {
+		this.codigoOrganizacion = codigoOrganizacion;
+	}
+	
+	public int getCodigoPersona() {
+		return codigoPersona;
+	}
+	
+	public void setCodigoPersona(int codigoPersona) {
+		this.codigoPersona = codigoPersona;
+	}
+	
+	public double getValor() {
+		return valor;
+	}
+	
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public Date getFechaEstimadaCierre() {
+		return fechaEstimadaCierre;
+	}
+	
+	public void setFechaEstimadaCierre(String fechaEstimadaCierre) {
+		if (esFecha(fechaEstimadaCierre)) {
+			
+		}
+		//this.fechaEstimadaCierre = fechaEstimadaCierre;
+	}
+	
+	public boolean isEstado() {
+		return estado;
+	}
+	
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+}

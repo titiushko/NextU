@@ -1,0 +1,19 @@
+package entidades;
+
+import java.sql.Time;
+import java.util.Date;
+
+/**
+*
+* @author titiushko
+*/
+public class Actividad {
+	private int codigo;
+	private String descripcion;
+	private String tipo;
+	private Date fecha;
+	private Time hora;
+	private int duracion;
+	private int codigoOrganizacion;
+	private int codigoPersona;
+}

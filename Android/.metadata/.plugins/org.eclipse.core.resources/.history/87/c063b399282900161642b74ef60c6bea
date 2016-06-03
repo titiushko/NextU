@@ -1,0 +1,9 @@
+package entidades;
+
+public class Negocio {
+	private String titulo;
+	private String descripcion;
+	private String nombre;
+	private double valor;
+	private String telefono;
+}

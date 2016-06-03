@@ -1,0 +1,8 @@
+package entidades;
+
+public class Organizacion {
+	private int codigo;
+	private String nombre;
+	private String direccion;
+	private String telefono;
+}

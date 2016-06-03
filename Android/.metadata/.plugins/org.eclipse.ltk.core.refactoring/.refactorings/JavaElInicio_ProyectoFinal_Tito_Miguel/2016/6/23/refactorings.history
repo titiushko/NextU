@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;herramientas.Validaciones.java&apos; to &apos;Validar.java&apos;&#x0D;&#x0A;- Original project: &apos;JavaElInicio_ProyectoFinal_Tito_Miguel&apos;&#x0D;&#x0A;- Original element: &apos;herramientas.Validaciones.java&apos;&#x0D;&#x0A;- Renamed element: &apos;herramientas.Validar.java&apos;" description="Rename compilation unit &apos;Validaciones.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;herramientas{Validaciones.java" name="Validar.java" references="false" stamp="1464923829958" version="1.0"/>
+</session>

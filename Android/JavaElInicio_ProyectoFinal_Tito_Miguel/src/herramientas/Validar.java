@@ -1,0 +1,41 @@
+package herramientas;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+* @author titiushko
+*/
+public class Validar {
+	/**
+	 * @see http://eos87.blogspot.com/2008/01/validacin-de-email-y-fecha-en-java.html
+	 */
+	public static boolean fecha(String fechax) {
+		try {
+			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+			Date fecha = formatoFecha.parse(fechax);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * @see http://eos87.blogspot.com/2008/01/validacin-de-email-y-fecha-en-java.html
+	 */
+	public static boolean correoElectronico(String correo) {
+		Pattern pat = null;
+		Matcher mat = null;
+		pat = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
+		mat = pat.matcher(correo);
+		if (mat.find()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+}

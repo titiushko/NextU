@@ -4,8 +4,21 @@
 <fullyQualifiedTypeName name="Actividad03_04.Producto"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.io.PrintStream"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="Actividad02_02.Automovil"/>
 <fullyQualifiedTypeName name="Actividad03_02.SumaDeNumeros"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.sql.Time"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+<fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="herramientas.Validaciones"/>
+<fullyQualifiedTypeName name="entidades.Organizacion"/>
+<fullyQualifiedTypeName name="entidades.Negocio"/>
+<fullyQualifiedTypeName name="entidades.Actividad"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
+<fullyQualifiedTypeName name="entidades.Persona"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="herramientas.Validar"/>
 </qualifiedTypeNameHistroy>

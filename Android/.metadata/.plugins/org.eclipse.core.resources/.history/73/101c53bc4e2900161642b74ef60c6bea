@@ -1,0 +1,124 @@
+import java.util.Scanner;
+
+import entidades.Actividad;
+import entidades.Negocio;
+import entidades.Organizacion;
+import entidades.Persona;
+
+/**
+* @author titiushko
+*/
+public class Main {
+	private static Scanner teclado = new Scanner(System.in);
+	private static EquipoComercial equipo = new EquipoComercial(5);
+	
+	public static void main(String[] args) {
+		boolean salirPrograma = true;
+		int opcionMenu;
+		
+		try {
+			do {
+				opcionMenu = menu("principal");
+				System.out.println();
+				
+				switch (opcionMenu) {
+					case 1:
+						operacionSubMenu("personas");
+						break;
+					case 2:
+						operacionSubMenu("organizaciones");
+						break;
+					case 3:
+						operacionSubMenu("negocios");
+						break;
+					case 4:
+						operacionSubMenu("actividades");
+						break;
+					case 5:	// Salir del programa
+						salirPrograma = false;
+						break;
+					default:
+						opcionMenu = menu("principal");
+						System.out.println();
+						break;
+				}
+			} while (salirPrograma);
+		}
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\nEl programa ha terminado.\n");
+		
+		teclado.close();
+	}
+	
+	/**
+	* Ejecuta las operaciones del sub menú
+	* @param entidad Entidad a la cual se ejecutaran las operaciones
+	*/
+	public static void operacionSubMenu(String entidad) {
+		boolean salirSubMenu = true;
+		int opcionSubMenu;
+		
+		do {
+			opcionSubMenu = menu(entidad);
+			System.out.println();
+			
+			switch (opcionSubMenu) {
+				case 1:
+					
+					break;
+				case 4:	// Regresar al menú principal
+					salirSubMenu = false;
+					break;
+				default:
+					opcionSubMenu = menu(entidad);
+					System.out.println();
+					break;
+			}
+		} while (salirSubMenu);
+	}
+
+	/**
+	* Mostrar en pantalla las opciones del menú principal y los sub menús
+	* @param nivelMenu Menú que se quiere mostrar
+	* @return Opción digitada por el usuario, si no es una opción valida se devuelve 0
+	*/
+	public static int menu(String nivelMenu) {
+		System.out.println();
+		System.out.println("-----------------------------------------------");
+		System.out.println("\t\tMENÚ " + nivelMenu.toUpperCase());
+		System.out.println("-----------------------------------------------");
+		
+		switch (nivelMenu) {
+			case "personas":
+			case "organizaciones":
+			case "negocios":
+			case "actividades":
+				System.out.println("Agregar\t\t\t\t\t[1]");
+				System.out.println("Buscar\t\t\t\t\t[2]");
+				System.out.println("Eliminar\t\t\t\t[3]");
+				System.out.println("Regresar\t\t\t\t[4]");
+				break;
+			case "principal":
+			default:
+				System.out.println("Personas\t\t\t\t[1]");
+				System.out.println("Organizaciones\t\t\t\t[2]");
+				System.out.println("Negocios\t\t\t\t[3]");
+				System.out.println("Actividades\t\t\t\t[4]");
+				System.out.println("Salir\t\t\t\t\t[5]");
+				break;
+		}
+		
+		System.out.println("-----------------------------------------------");
+		System.out.print("Por favor digite una opción: ");
+		
+		try {
+			return Integer.parseInt(teclado.nextLine());
+		}
+		catch (Exception e) {
+			return 0;
+		}
+	}
+}

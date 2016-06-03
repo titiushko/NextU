@@ -1,0 +1,14 @@
+package entidades;
+
+/**
+*
+* @author titiushko
+*/
+public class Negocio {
+	private int codigo;
+	private String titulo;
+	private String descripcion;
+	private int codigoOrganizacion;
+	private int codigoPersona;
+	private double valor;
+}
