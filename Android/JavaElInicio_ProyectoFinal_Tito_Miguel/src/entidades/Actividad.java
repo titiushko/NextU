@@ -7,23 +7,14 @@ import java.util.Date;
 * @author titiushko
 */
 public class Actividad {
-	private int codigo;
 	private String descripcion;
 	private String tipo;
 	private Date fecha;
 	private Time hora;
 	private int duracion;
-	private int codigoPersona;
-	private int codigoOrganizacion;
-	private int codigoNegocio;
-	
-	public int getCodigo() {
-		return codigo;
-	}
-	
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	private int indicePersona;
+	private int indiceOrganizacion;
+	private int indiceNegocio;
 	
 	public String getDescripcion() {
 		return descripcion;
@@ -65,27 +56,27 @@ public class Actividad {
 		this.duracion = duracion;
 	}
 	
-	public int getCodigoPersona() {
-		return codigoPersona;
+	public int getIndicePersona() {
+		return indicePersona;
 	}
 	
-	public void setCodigoPersona(int codigoPersona) {
-		this.codigoPersona = codigoPersona;
+	public void setIndicePersona(int indicePersona) {
+		this.indicePersona = indicePersona;
 	}
 	
-	public int getCodigoOrganizacion() {
-		return codigoOrganizacion;
+	public int getIndiceOrganizacion() {
+		return indiceOrganizacion;
 	}
 	
-	public void setCodigoOrganizacion(int codigoOrganizacion) {
-		this.codigoOrganizacion = codigoOrganizacion;
+	public void setIndiceOrganizacion(int indiceOrganizacion) {
+		this.indiceOrganizacion = indiceOrganizacion;
 	}
 	
-	public int getCodigoNegocio() {
-		return codigoNegocio;
+	public int getIndiceNegocio() {
+		return indiceNegocio;
 	}
 	
-	public void setCodigoNegocio(int codigoNegocio) {
-		this.codigoNegocio = codigoNegocio;
+	public void setIndiceNegocio(int indiceNegocio) {
+		this.indiceNegocio = indiceNegocio;
 	}
 }

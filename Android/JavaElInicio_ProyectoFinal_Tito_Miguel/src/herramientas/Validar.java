@@ -1,7 +1,9 @@
 package herramientas;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,17 +12,18 @@ import java.util.regex.Pattern;
 */
 public class Validar {
 	/**
-	 * @see http://eos87.blogspot.com/2008/01/validacin-de-email-y-fecha-en-java.html
+	 * @see http://jbviera.blogspot.com/2012/04/validar-si-una-fecha-es-valida-con-java.html
 	 */
-	public static boolean fecha(String fechax) {
+	public static boolean fecha(String fecha) {
 		try {
-			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-			Date fecha = formatoFecha.parse(fechax);
-		}
-		catch (Exception e) {
-			return false;
-		}
-		return true;
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(fecha);
+        }
+		catch (ParseException e) {
+            return false;
+        }
+        return true;
 	}
 
 	/**

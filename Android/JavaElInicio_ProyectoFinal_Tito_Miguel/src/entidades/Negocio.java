@@ -6,22 +6,13 @@ import java.util.Date;
 * @author titiushko
 */
 public class Negocio {
-	private int codigo;
 	private String titulo;
 	private String descripcion;
-	private int codigoOrganizacion;
-	private int codigoPersona;
+	private int indiceOrganizacion;
+	private int indicePersona;
 	private double valor;
 	private Date fechaEstimadaCierre;
-	private boolean estado;
-	
-	public int getCodigo() {
-		return codigo;
-	}
-	
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+	private String estado;
 	
 	public String getTitulo() {
 		return titulo;
@@ -39,20 +30,20 @@ public class Negocio {
 		this.descripcion = descripcion;
 	}
 	
-	public int getCodigoOrganizacion() {
-		return codigoOrganizacion;
+	public int getIndiceOrganizacion() {
+		return indiceOrganizacion;
 	}
 	
-	public void setCodigoOrganizacion(int codigoOrganizacion) {
-		this.codigoOrganizacion = codigoOrganizacion;
+	public void setIndiceOrganizacion(int indiceOrganizacion) {
+		this.indiceOrganizacion = indiceOrganizacion;
 	}
 	
-	public int getCodigoPersona() {
-		return codigoPersona;
+	public int getIndicePersona() {
+		return indicePersona;
 	}
 	
-	public void setCodigoPersona(int codigoPersona) {
-		this.codigoPersona = codigoPersona;
+	public void setIndicePersona(int indicePersona) {
+		this.indicePersona = indicePersona;
 	}
 	
 	public double getValor() {
@@ -71,11 +62,11 @@ public class Negocio {
 		this.fechaEstimadaCierre = fechaEstimadaCierre;
 	}
 	
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 	
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 }

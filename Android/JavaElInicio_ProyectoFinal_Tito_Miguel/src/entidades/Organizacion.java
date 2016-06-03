@@ -4,18 +4,9 @@ package entidades;
 * @author titiushko
 */
 public class Organizacion {
-	private int codigo;
 	private String nombre;
 	private String direccion;
 	private String telefono;
-	
-	public int getCodigo() {
-		return codigo;
-	}
-	
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
 	
 	public String getNombre() {
 		return nombre;
