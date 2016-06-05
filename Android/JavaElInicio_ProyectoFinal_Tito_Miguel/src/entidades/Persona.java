@@ -1,8 +1,8 @@
 package entidades;
 
 /**
-* @author titiushko
-*/
+ * @author titiushko
+ */
 public class Persona {
 	private String nombre;
 	private String telefono;

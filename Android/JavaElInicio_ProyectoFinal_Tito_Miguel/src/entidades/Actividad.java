@@ -1,16 +1,15 @@
 package entidades;
 
-import java.sql.Time;
 import java.util.Date;
 
 /**
-* @author titiushko
-*/
+ * @author titiushko
+ */
 public class Actividad {
 	private String descripcion;
 	private String tipo;
 	private Date fecha;
-	private Time hora;
+	private Date hora;
 	private int duracion;
 	private int indicePersona;
 	private int indiceOrganizacion;
@@ -40,11 +39,11 @@ public class Actividad {
 		this.fecha = fecha;
 	}
 	
-	public Time getHora() {
+	public Date getHora() {
 		return hora;
 	}
 	
-	public void setHora(Time hora) {
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
 	

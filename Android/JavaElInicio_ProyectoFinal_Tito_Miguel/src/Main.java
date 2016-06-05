@@ -1,11 +1,8 @@
 import java.util.Scanner;
 
-import entidades.Organizacion;
-import entidades.Persona;
-
 /**
-* @author titiushko
-*/
+ * @author titiushko
+ */
 public class Main {
 	private static Scanner teclado = new Scanner(System.in);
 	
@@ -16,23 +13,10 @@ public class Main {
 	public static void main(String[] args) {
 		boolean salirPrograma = true;
 		int opcionMenu;
-		
-		equipoComercial.personas[1] = new Persona();
-		equipoComercial.personas[1].setNombre("Tito");
-		equipoComercial.personas[1].setTelefono("784512");;
-		equipoComercial.personas[1].setCorreoElectronico("tito@gmail.com");
-		
-		equipoComercial.personas[3] = new Persona();
-		equipoComercial.personas[3].setNombre("Javier");
-		equipoComercial.personas[3].setTelefono("120457");;
-		equipoComercial.personas[3].setCorreoElectronico("javier@gmail.com");
-		
-		equipoComercial.organizaciones[1] = new Organizacion();
-		equipoComercial.organizaciones[1].setNombre("Creativa");
-		equipoComercial.organizaciones[1].setDireccion("San Salvador");
-		equipoComercial.organizaciones[1].setTelefono("784512");
-		
+
 		try {
+			equipoComercial.cargarDatosEjemplo();
+			
 			do {
 				opcionMenu = menu("principal");
 				System.out.println();
@@ -59,6 +43,10 @@ public class Main {
 						break;
 				}
 			} while (salirPrograma);
+			
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\nEl programa ha terminado.\n");
+			System.out.println("*********\n*RESUMEN*\n*********");
+			System.out.println(equipoComercial);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -66,16 +54,12 @@ public class Main {
 		finally {
 			teclado.close();
 		}
-		
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\nEl programa ha terminado.\n");
-		System.out.println("*********\n*RESUMEN*\n*********");
-		System.out.println(equipoComercial);
 	}
 	
 	/**
-	* Ejecuta las operaciones del sub menú
-	* @param entidad Entidad a la cual se ejecutaran las operaciones
-	*/
+	 * Ejecuta las operaciones del sub menú
+	 * @param entidad Entidad a la cual se ejecutaran las operaciones
+	 */
 	public static void ejecutarSubMenu(String entidad) throws Exception {
 		boolean salirSubMenu = true;
 		int opcionSubMenu;
@@ -98,20 +82,28 @@ public class Main {
 						System.out.printf("Limite de %s registrados. No se pueden registrar mas %s.\n", entidad, entidad);
 					}
 					break;
-				case 3:
-					if (equipoComercial.estaVacio(entidad)) {
-						if (equipoComercial.registrar(entidad, teclado)) {
-							System.out.println("Se eliminó éxitosamente.");
-						}
-						else {
-							System.out.println("No se pudo eliminar.");
+				case 2:
+					equipoComercial.buscar(entidad, teclado);
+					break;
+				case 4:
+					if (!equipoComercial.estaVacio(entidad)) {
+						switch (equipoComercial.eliminar(entidad, teclado)) {
+							case 1:
+								System.out.println("Se eliminó éxitosamente.");
+								break;
+							case 0:
+								System.out.println("No se eliminó.");
+								break;
+							case -1:
+								System.out.println("No se pudo eliminar.");
+								break;
 						}
 					}
 					else {
 						System.out.printf("No hay %s que eliminar. No hay registros de %s.\n", entidad, entidad);
 					}
 					break;
-				case 4:	// Regresar al menú principal
+				case 5:	// Regresar al menú principal
 					salirSubMenu = false;
 					break;
 				default:
@@ -121,13 +113,12 @@ public class Main {
 			}
 		} while (salirSubMenu);
 	}
-	
 
 	/**
-	* Mostrar en pantalla las opciones del menú principal y los sub menús
-	* @param nivelMenu Menú que se quiere mostrar
-	* @return Opción digitada por el usuario, si no es una opción valida se devuelve 0
-	*/
+	 * Mostrar en pantalla las opciones del menú principal y los sub menús
+	 * @param nivelMenu Menú que se quiere mostrar
+	 * @return Opción digitada por el usuario, si no es una opción valida se devuelve 0
+	 */
 	public static int menu(String nivelMenu) {
 		System.out.println();
 		System.out.println("-----------------------------------------------");
@@ -140,9 +131,10 @@ public class Main {
 			case "negocios":
 			case "actividades":
 				System.out.println("Agregar\t\t\t\t\t[1]");
-				System.out.println("Modificar\t\t\t\t\t[2]");
-				System.out.println("Eliminar\t\t\t\t[3]");
-				System.out.println("Regresar\t\t\t\t[4]");
+				System.out.println("Consultar\t\t\t\t[2]");
+				System.out.println("Modificar\t\t\t\t[3]");
+				System.out.println("Eliminar\t\t\t\t[4]");
+				System.out.println("Regresar\t\t\t\t[5]");
 				break;
 			case "principal":
 			default:

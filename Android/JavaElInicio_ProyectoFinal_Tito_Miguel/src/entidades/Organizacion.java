@@ -1,8 +1,8 @@
 package entidades;
 
 /**
-* @author titiushko
-*/
+ * @author titiushko
+ */
 public class Organizacion {
 	private String nombre;
 	private String direccion;

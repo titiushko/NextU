@@ -3,8 +3,8 @@ package entidades;
 import java.util.Date;
 
 /**
-* @author titiushko
-*/
+ * @author titiushko
+ */
 public class Negocio {
 	private String titulo;
 	private String descripcion;

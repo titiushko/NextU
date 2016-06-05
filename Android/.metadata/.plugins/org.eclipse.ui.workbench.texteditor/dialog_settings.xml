@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="409" key="DIALOG_X_ORIGIN"/>
+		<item value="380" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getIndice" key="selection"/>
+		<item value="protected" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
-		<item value="false" key="wholeword"/>
+		<item value="true" key="wholeword"/>
 		<list key="findhistory">
+			<item value="public"/>
+			<item value="private"/>
+			<item value="Time"/>
 			<item value="getCodigo"/>
 			<item value="setCodigo"/>
 			<item value="codigo"/>
 			<item value="Codigo"/>
 			<item value="boolean resultado;"/>
-			<item value="array"/>
-			<item value="operacionSubMenu"/>
-			<item value="tienePersonas"/>
 		</list>
 		<list key="replacehistory">
+			<item value="protected"/>
+			<item value="public"/>
+			<item value="Date"/>
 			<item value="getIndice"/>
 			<item value="setIndice"/>
 			<item value="indice"/>
 			<item value="Indice"/>
 			<item value="ejecutarSubMenu"/>
-			<item value="espacioDisponiblePersonas"/>
-			<item value="equipoComercial"/>
-			<item value="cantidadElementos"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
