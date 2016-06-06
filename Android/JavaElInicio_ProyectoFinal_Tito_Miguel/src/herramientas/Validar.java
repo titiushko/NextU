@@ -65,6 +65,15 @@ public class Validar {
 	}
 	
 	/**
+	 * Validar la información de los atributos de tipo String con formato de correo electrónico
+	 * @param etiqueta Texto para solicitar el atributo
+	 * @return Atributo validado
+	 */
+	public static String atributoCorreo(String etiqueta, Scanner teclado) throws Exception {
+		return atributoTexto(etiqueta, "correo", teclado);
+	}
+	
+	/**
 	 * Validar la información de los atributos de tipo String
 	 * @param etiqueta Texto para solicitar el atributo
 	 * @param tipo Tipo de atributo
@@ -183,5 +192,31 @@ public class Validar {
 		} while (atributo == -1);
 		
 		return atributo;
+	}
+	
+	/**
+	 * Validar que se seleccione una opción entre sí o no
+	 * @param etiqueta Texto a mostrar para solicitar sí o no
+	 * @return Devuelve verdadero si se selecciona la opción sí, de lo contratio devuelve falso
+	 */
+	public static boolean opcionSiNo(String etiqueta, Scanner teclado) {
+		int opcion = -1;
+		
+		do {
+			System.out.print(etiqueta + "? (1 = sí | 2 = no): ");
+			try {
+				opcion = Integer.parseInt(teclado.nextLine());
+			}
+			catch (Exception e) {
+				opcion = -1;
+			}
+		} while (!(opcion == 1 || opcion == 2) || opcion == -1);
+		
+		if (opcion == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

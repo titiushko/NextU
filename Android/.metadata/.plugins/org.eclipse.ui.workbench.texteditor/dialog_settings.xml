@@ -6,37 +6,37 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="protected" key="selection"/>
+		<item value="resultado.append(&quot;VACÍO\n&quot;);" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="true" key="wholeword"/>
 		<list key="findhistory">
-			<item value="public"/>
-			<item value="private"/>
-			<item value="Time"/>
-			<item value="getCodigo"/>
-			<item value="setCodigo"/>
-			<item value="codigo"/>
-			<item value="Codigo"/>
-			<item value="boolean resultado;"/>
+			<item value="resultado.append(&quot;NULL\n&quot;);"/>
+			<item value="cantidadElementos"/>
+			<item value="(seleccionar"/>
+			<item value="private int seleccionar"/>
+			<item value="protected void modificar"/>
+			<item value="protected int[] lista"/>
+			<item value="= seleccionar"/>
+			<item value="No se encontró"/>
 		</list>
 		<list key="replacehistory">
+			<item value="resultado.append(&quot;VACÍO\n&quot;);"/>
+			<item value="atributoTexto("/>
 			<item value="protected"/>
 			<item value="public"/>
 			<item value="Date"/>
 			<item value="getIndice"/>
 			<item value="setIndice"/>
 			<item value="indice"/>
-			<item value="Indice"/>
-			<item value="ejecutarSubMenu"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="688" key="DIALOG_X_ORIGIN"/>
-		<item value="241" key="DIALOG_Y_ORIGIN"/>
+		<item value="952" key="DIALOG_X_ORIGIN"/>
+		<item value="503" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

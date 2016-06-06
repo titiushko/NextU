@@ -8,14 +8,15 @@ public class Main {
 	
 	// Se podría pedir al usuario que decida la cantidad de elementos que se puedan registrar de las entidades
 	// Pero para este ejemplo se define una cantidad específica para agilizar la experiencia de usuario
-	private static EquipoComercial equipoComercial = new EquipoComercial(5);
+	private static final int CANTIDAD_ELEMENTOS = 5;
+	private static EquipoComercial equipoComercial = new EquipoComercial(CANTIDAD_ELEMENTOS);
 	
 	public static void main(String[] args) {
 		boolean salirPrograma = true;
 		int opcionMenu;
 
 		try {
-			equipoComercial.cargarDatosEjemplo();
+			equipoComercial.cargarDatosEjemplo(CANTIDAD_ELEMENTOS);
 			
 			do {
 				opcionMenu = menu("principal");
@@ -69,7 +70,7 @@ public class Main {
 			System.out.println();
 			
 			switch (opcionSubMenu) {
-				case 1:
+				case 1:	// Registrar
 					if (equipoComercial.espacioDisponible(entidad)) {
 						if (equipoComercial.registrar(entidad, teclado)) {
 							System.out.println("Se registró éxitosamente.");
@@ -82,10 +83,28 @@ public class Main {
 						System.out.printf("Limite de %s registrados. No se pueden registrar mas %s.\n", entidad, entidad);
 					}
 					break;
-				case 2:
-					equipoComercial.buscar(entidad, teclado);
+				case 2:	// Buscar
+					if (!equipoComercial.estaVacio(entidad)) {
+						equipoComercial.buscar(entidad, teclado);
+					}
+					else {
+						System.out.printf("No hay %s que consultar. No hay registros de %s.\n", entidad, entidad);
+					}
 					break;
-				case 4:
+				case 3:	// Modificar
+					if (!equipoComercial.estaVacio(entidad)) {
+						if (equipoComercial.modificar(entidad, teclado)) {
+							System.out.println("Se modificó éxitosamente.");
+						}
+						else {
+							System.out.println("No se pudo modificar.");
+						}
+					}
+					else {
+						System.out.printf("No hay %s que modificar. No hay registros de %s.\n", entidad, entidad);
+					}
+					break;
+				case 4:	// Eliminar
 					if (!equipoComercial.estaVacio(entidad)) {
 						switch (equipoComercial.eliminar(entidad, teclado)) {
 							case 1:
@@ -103,7 +122,15 @@ public class Main {
 						System.out.printf("No hay %s que eliminar. No hay registros de %s.\n", entidad, entidad);
 					}
 					break;
-				case 5:	// Regresar al menú principal
+				case 5:	// Listado
+					if (!equipoComercial.estaVacio(entidad)) {
+						equipoComercial.listado(entidad);
+					}
+					else {
+						System.out.printf("No hay %s que mostrar. No hay registros de %s.\n", entidad, entidad);
+					}
+					break;
+				case 6:	// Regresar al menú principal
 					salirSubMenu = false;
 					break;
 				default:
@@ -130,11 +157,12 @@ public class Main {
 			case "organizaciones":
 			case "negocios":
 			case "actividades":
-				System.out.println("Agregar\t\t\t\t\t[1]");
+				System.out.println("Registrar\t\t\t\t[1]");
 				System.out.println("Consultar\t\t\t\t[2]");
 				System.out.println("Modificar\t\t\t\t[3]");
 				System.out.println("Eliminar\t\t\t\t[4]");
-				System.out.println("Regresar\t\t\t\t[5]");
+				System.out.println("Listado\t\t\t\t\t[5]");
+				System.out.println("Regresar\t\t\t\t[6]");
 				break;
 			case "principal":
 			default:

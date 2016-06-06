@@ -1,6 +1,5 @@
 package herramientas;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
@@ -40,7 +39,7 @@ public class OperacionesEntidades {
 			personas[indice] = new Persona();
 			personas[indice].setNombre(Validar.atributoTexto("Nombre", teclado));
 			personas[indice].setTelefono(Validar.atributoTexto("Teléfono", teclado));
-			personas[indice].setCorreoElectronico(Validar.atributoTexto("Correo electrónico (usuario@dominio.com)", "correo", teclado));
+			personas[indice].setCorreoElectronico(Validar.atributoCorreo("Correo electrónico (usuario@dominio.com)", teclado));
 		}
 		catch (Exception e) {
 			personas[indice] = null;
@@ -71,6 +70,34 @@ public class OperacionesEntidades {
 			System.out.println("Correo electrónico: " + personas[posicion].getCorreoElectronico());
 		}
 	}
+	
+	/**
+	 * Modificar una persona
+	 */
+	protected void modificarPersona(Scanner teclado) throws Exception {
+		if (estaVacioPersonas()) {
+			throw new Exception("No hay personas registradas.");
+		}
+
+		try {
+			int indice = seleccionarPersona(teclado);
+			
+			if (Validar.opcionSiNo("Modificar nombre (" + personas[indice].getNombre() + ")", teclado)) {
+				personas[indice].setNombre(Validar.atributoTexto("Nombre", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar teléfono (" + personas[indice].getTelefono() + ")", teclado)) {
+				personas[indice].setTelefono(Validar.atributoTexto("Teléfono", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar correo electrónico (" + personas[indice].getCorreoElectronico() + ")", teclado)) {
+				personas[indice].setCorreoElectronico(Validar.atributoCorreo("Correo electrónico (usuario@dominio.com)", teclado));
+			}
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
 
 	/**
 	 * Eliminar una persona
@@ -81,20 +108,10 @@ public class OperacionesEntidades {
 			throw new Exception("No hay personas registradas.");
 		}
 		
-		int indicePersona = seleccionarPersona(teclado);
-		int opcion = -1;
-		do {
-			System.out.printf("Eliminar a %s? (1 = si | 2 = no): ", personas[indicePersona].getNombre());
-			try {
-				opcion = Integer.parseInt(teclado.nextLine());
-			}
-			catch (Exception e) {
-				opcion = -1;
-			}
-		} while (!(opcion == 1 || opcion == 2) || opcion == -1);
+		int indice = seleccionarPersona(teclado);
 		
-		if (opcion == 1) {
-			personas[indicePersona] = null;
+		if (Validar.opcionSiNo("Eliminar a " + personas[indice].getNombre(), teclado)) {
+			personas[indice] = null;
 			return true;
 		}
 		else {
@@ -168,13 +185,22 @@ public class OperacionesEntidades {
 	 * @return Indice de las posiciones que tienen registros de personas
 	 */
 	protected int[] listaPersonas() {
+		return listaPersonas(-1);
+	}
+	
+	/**
+	 * Mostrar el listado de personas, ignorando el indice de la persona que se envía por parámetro
+	 * @param ignorarIndice Indice de la persona que se ignora
+	 * @return Indice de las posiciones que tienen registros de personas
+	 */
+	protected int[] listaPersonas(int ignorarIndice) {
 		int[] opcionesPersona = new int[personas.length];
 		
 		System.out.println("Listado de Personas");
 		System.out.println("~~~~~~~~~~~~~~~~~~~");
 		
 		for (int i = 0; i < personas.length; i++) {
-			if (personas[i] != null) {
+			if (personas[i] != null && i != ignorarIndice) {
 				opcionesPersona[i] = i + 1;
 				System.out.printf("%d\t|\t%s\t|\t%s\t|\t%s\n", i + 1, personas[i].getNombre(), personas[i].getTelefono(), personas[i].getCorreoElectronico());
 			}
@@ -191,9 +217,18 @@ public class OperacionesEntidades {
 	 * @return Opcion digitada por el usuario
 	 */
 	private int seleccionarPersona(Scanner teclado) {
+		return seleccionarPersona(-1, teclado);
+	}
+	
+	/**
+	 * Validar que se seleccione una persona del listado de personas
+	 * @param ignorarIndice Indice de la persona que se ignora
+	 * @return Opcion digitada por el usuario
+	 */
+	private int seleccionarPersona(int ignorarIndice, Scanner teclado) {
 		int codigoPersona;
 		boolean opcionPersonaValida = true;
-		int[] opcionesPersona = listaPersonas();
+		int[] opcionesPersona = listaPersonas(ignorarIndice);
 		
 		do {
 			System.out.print("Persona: ");
@@ -211,6 +246,8 @@ public class OperacionesEntidades {
 				}
 			}
 		} while (opcionPersonaValida);
+		
+		System.out.println();
 		
 		return codigoPersona - 1;
 	}
@@ -263,6 +300,34 @@ public class OperacionesEntidades {
 	}
 	
 	/**
+	 * Modificar una organizacion
+	 */
+	protected void modificarOrganizacion(Scanner teclado) throws Exception {
+		if (estaVacioOrganizaciones()) {
+			throw new Exception("No hay organizacions registradas.");
+		}
+
+		try {
+			int indice = seleccionarOrganizacion(teclado);
+			
+			if (Validar.opcionSiNo("Modificar nombre (" + organizaciones[indice].getNombre() + ")", teclado)) {
+				organizaciones[indice].setNombre(Validar.atributoTexto("Nombre", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar dirección (" + organizaciones[indice].getDireccion() + ")", teclado)) {
+				organizaciones[indice].setDireccion(Validar.atributoTexto("Dirección", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar teléfono (" + organizaciones[indice].getTelefono() + ")", teclado)) {
+				organizaciones[indice].setTelefono(Validar.atributoTexto("Teléfono", teclado));
+			}
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	/**
 	 * Eliminar una organizacion
 	 * @return Devuelve verdadero si se eliminó la organizacion, de lo contrario devuelve falso
 	 */
@@ -271,20 +336,10 @@ public class OperacionesEntidades {
 			throw new Exception("No hay organizaciones registradas.");
 		}
 		
-		int indiceOrganizacion = seleccionarOrganizacion(teclado);
-		int opcion = -1;
-		do {
-			System.out.printf("Eliminar a %s? (1 = si | 2 = no): ", organizaciones[indiceOrganizacion].getNombre());
-			try {
-				opcion = Integer.parseInt(teclado.nextLine());
-			}
-			catch (Exception e) {
-				opcion = -1;
-			}
-		} while (!(opcion == 1 || opcion == 2) || opcion == -1);
+		int indice = seleccionarOrganizacion(teclado);
 		
-		if (opcion == 1) {
-			organizaciones[indiceOrganizacion] = null;
+		if (Validar.opcionSiNo("Eliminar a " + organizaciones[indice].getNombre(), teclado)) {
+			organizaciones[indice] = null;
 			return true;
 		}
 		else {
@@ -358,13 +413,22 @@ public class OperacionesEntidades {
 	 * @return Indice de las posiciones que tienen registros de organizaciones
 	 */
 	protected int[] listaOrganizaciones() {
+		return listaOrganizaciones(-1);
+	}
+	
+	/**
+	 * Mostrar el listado de organizaciones, ignorando el indice de la organización que se envía por parámetro
+	 * @param ignorarIndice Indice de la organización que se ignora
+	 * @return Indice de las posiciones que tienen registros de organizaciones
+	 */
+	protected int[] listaOrganizaciones(int ignorarIndice) {
 		int[] opcionesOrganizacion = new int[organizaciones.length];
 		
 		System.out.println("Listado de Organizaciones");
-		System.out.println("~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~");
 		
 		for (int i = 0; i < organizaciones.length; i++) {
-			if (organizaciones[i] != null) {
+			if (organizaciones[i] != null && i != ignorarIndice) {
 				opcionesOrganizacion[i] = i + 1;
 				System.out.printf("%d\t|\t%s\t|\t%s\t|\t%s\n", i + 1, organizaciones[i].getNombre(), organizaciones[i].getDireccion(), organizaciones[i].getTelefono());
 			}
@@ -381,9 +445,18 @@ public class OperacionesEntidades {
 	 * @return Opcion digitada por el usuario
 	 */
 	private int seleccionarOrganizacion(Scanner teclado) {
+		return seleccionarOrganizacion(-1, teclado);
+	}
+	
+	/**
+	 * Validar que se seleccione una organización del listado de organizaciones
+	 * @param ignorarIndice Indice de la organización que se ignora
+	 * @return Opcion digitada por el usuario
+	 */
+	private int seleccionarOrganizacion(int ignorarIndice, Scanner teclado) {
 		int codigoOrganizacion;
 		boolean opcionOrganizacionValida = true;
-		int[] opcionesOrganizacion = listaOrganizaciones();
+		int[] opcionesOrganizacion = listaOrganizaciones(ignorarIndice);
 		
 		do {
 			System.out.print("Organizacion: ");
@@ -401,6 +474,8 @@ public class OperacionesEntidades {
 				}
 			}
 		} while (opcionOrganizacionValida);
+		
+		System.out.println();
 		
 		return codigoOrganizacion - 1;
 	}
@@ -471,6 +546,52 @@ public class OperacionesEntidades {
 	}
 	
 	/**
+	 * Modificar una negocio
+	 */
+	protected void modificarNegocio(Scanner teclado) throws Exception {
+		if (estaVacioNegocios()) {
+			throw new Exception("No hay negocios registradas.");
+		}
+
+		try {
+			int indice = seleccionarNegocio(teclado);
+			
+			if (Validar.opcionSiNo("Modificar título (" + negocios[indice].getTitulo() + ")", teclado)) {
+				negocios[indice].setTitulo(Validar.atributoTexto("Título", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar descripción (" + negocios[indice].getDescripcion() + ")", teclado)) {
+				negocios[indice].setDescripcion(Validar.atributoTexto("Descripción", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar estado (" + negocios[indice].getEstado() + ")", teclado)) {
+				negocios[indice].setEstado(Validar.atributoTexto("Estado", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar valor (" + negocios[indice].getValor() + ")", teclado)) {
+				negocios[indice].setValor(Validar.atributoDecimal("Valor", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar fecha estimada de cierre (" + new SimpleDateFormat("dd/MM/yyyy").format(negocios[indice].getFechaEstimadaCierre()) + ")", teclado)) {
+				negocios[indice].setFechaEstimadaCierre(Validar.atributoFecha("Fecha estimada de cierre (dd/MM/yyyy)", teclado));
+			}
+			
+			boolean tieneOrganizacion = organizaciones[negocios[indice].getIndiceOrganizacion()] != null ? true : false;
+			if (Validar.opcionSiNo("Modificar organización (" + (tieneOrganizacion ? organizaciones[negocios[indice].getIndiceOrganizacion()].getNombre() : "") + ")", teclado)) {
+				negocios[indice].setIndiceOrganizacion(seleccionarOrganizacion(tieneOrganizacion ? negocios[indice].getIndiceOrganizacion() : -1, teclado));
+			}
+			
+			boolean tienePersona = personas[negocios[indice].getIndicePersona()] != null ? true : false;
+			if (Validar.opcionSiNo("Modificar persona (" + (tienePersona ? personas[negocios[indice].getIndicePersona()].getNombre() : "") + ")", teclado)) {
+				negocios[indice].setIndicePersona(seleccionarPersona(tienePersona ? negocios[indice].getIndicePersona() : -1, teclado));
+			}
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	/**
 	 * Eliminar una negocio
 	 * @return Devuelve verdadero si se eliminó la negocio, de lo contrario devuelve falso
 	 */
@@ -479,20 +600,10 @@ public class OperacionesEntidades {
 			throw new Exception("No hay negocios registradas.");
 		}
 		
-		int indiceNegocio = seleccionarNegocio(teclado);
-		int opcion = -1;
-		do {
-			System.out.printf("Eliminar a %s? (1 = si | 2 = no): ", negocios[indiceNegocio].getTitulo());
-			try {
-				opcion = Integer.parseInt(teclado.nextLine());
-			}
-			catch (Exception e) {
-				opcion = -1;
-			}
-		} while (!(opcion == 1 || opcion == 2) || opcion == -1);
+		int indice = seleccionarNegocio(teclado);
 		
-		if (opcion == 1) {
-			negocios[indiceNegocio] = null;
+		if (Validar.opcionSiNo("Eliminar a " + negocios[indice].getTitulo(), teclado)) {
+			negocios[indice] = null;
 			return true;
 		}
 		else {
@@ -566,13 +677,22 @@ public class OperacionesEntidades {
 	 * @return Indice de las posiciones que tienen registros de negocios
 	 */
 	protected int[] listaNegocios() {
+		return listaNegocios(-1);
+	}
+	
+	/**
+	 * Mostrar el listado de negocios, ignorando el indice del negocio que se envía por parámetro
+	 * @param ignorarIndice Indice del negocio que se ignora
+	 * @return Indice de las posiciones que tienen registros de negocios
+	 */
+	protected int[] listaNegocios(int ignorarIndice) {
 		int[] opcionesNegocio = new int[negocios.length];
 		
 		System.out.println("Listado de Negocios");
 		System.out.println("~~~~~~~~~~~~~~~~~~~");
 		
 		for (int i = 0; i < negocios.length; i++) {
-			if (negocios[i] != null) {
+			if (negocios[i] != null && i != ignorarIndice) {
 				opcionesNegocio[i] = i + 1;
 				System.out.printf("%d\t|\t%s\t|\t%s\t|\t%s\n", i + 1, negocios[i].getTitulo(), negocios[i].getValor(), new SimpleDateFormat("dd/MM/yyyy").format(negocios[i].getFechaEstimadaCierre()));
 			}
@@ -589,9 +709,18 @@ public class OperacionesEntidades {
 	 * @return Opcion digitada por el usuario
 	 */
 	private int seleccionarNegocio(Scanner teclado) {
+		return seleccionarNegocio(-1, teclado);
+	}
+	
+	/**
+	 * Validar que se seleccione una negocio del listado de negocios
+	 * @param ignorarIndice Indice del negocio que se ignora
+	 * @return Opcion digitada por el usuario
+	 */
+	private int seleccionarNegocio(int ignorarIndice, Scanner teclado) {
 		int codigoNegocio;
 		boolean opcionNegocioValida = true;
-		int[] opcionesNegocio = listaNegocios();
+		int[] opcionesNegocio = listaNegocios(ignorarIndice);
 		
 		do {
 			System.out.print("Negocio: ");
@@ -609,6 +738,8 @@ public class OperacionesEntidades {
 				}
 			}
 		} while (opcionNegocioValida);
+		
+		System.out.println();
 		
 		return codigoNegocio - 1;
 	}
@@ -682,6 +813,56 @@ public class OperacionesEntidades {
 			System.out.println("Negocio: " + (negocios[actividades[posicion].getIndiceNegocio()] != null ? negocios[actividades[posicion].getIndiceNegocio()].getTitulo() : ""));
 		}
 	}
+	/**
+	 * Modificar una actividad
+	 */
+	protected void modificarActividad(Scanner teclado) throws Exception {
+		if (estaVacioActividades()) {
+			throw new Exception("No hay actividades registradas.");
+		}
+
+		try {
+			int indice = seleccionarActividad(teclado);
+			
+			if (Validar.opcionSiNo("Modificar descripción (" + actividades[indice].getDescripcion() + ")", teclado)) {
+				actividades[indice].setDescripcion(Validar.atributoTexto("Descripción", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar tipo (" + actividades[indice].getTipo() + ")", teclado)) {
+				actividades[indice].setTipo(Validar.atributoTexto("Tipo", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar duración (" + actividades[indice].getDuracion() + ")", teclado)) {
+				actividades[indice].setDuracion(Validar.atributoEntero("Duración (horas)", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar fecha (" + new SimpleDateFormat("dd/MM/yyyy").format(actividades[indice].getFecha()) + ")", teclado)) {
+				actividades[indice].setFecha(Validar.atributoFecha("Fecha (dd/MM/yyyy)", teclado));
+			}
+			
+			if (Validar.opcionSiNo("Modificar hora (" + new SimpleDateFormat("HH:mm").format(actividades[indice].getHora()) + ")", teclado)) {
+				actividades[indice].setHora(Validar.atributoHora("Hora", teclado));
+			}
+			
+			boolean tieneOrganizacion = organizaciones[actividades[indice].getIndiceOrganizacion()] != null ? true : false;
+			if (Validar.opcionSiNo("Modificar organización (" + (tieneOrganizacion ? organizaciones[actividades[indice].getIndiceOrganizacion()].getNombre() : "") + ")", teclado)) {
+				actividades[indice].setIndiceOrganizacion(seleccionarOrganizacion(tieneOrganizacion ? actividades[indice].getIndiceOrganizacion() : -1, teclado));
+			}
+			
+			boolean tienePersona = personas[actividades[indice].getIndicePersona()] != null ? true : false;
+			if (Validar.opcionSiNo("Modificar persona (" + (tienePersona ? personas[actividades[indice].getIndicePersona()].getNombre() : "") + ")", teclado)) {
+				actividades[indice].setIndicePersona(seleccionarPersona(tienePersona ? actividades[indice].getIndicePersona() : -1, teclado));
+			}
+			
+			boolean tieneNegocio = negocios[actividades[indice].getIndiceNegocio()] != null ? true : false;
+			if (Validar.opcionSiNo("Modificar negocio (" + (tieneNegocio ? negocios[actividades[indice].getIndiceNegocio()].getTitulo() : "") + ")", teclado)) {
+				actividades[indice].setIndiceNegocio(seleccionarNegocio(tieneNegocio ? actividades[indice].getIndiceNegocio() : -1, teclado));
+			}
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
 	
 	/**
 	 * Eliminar una actividad
@@ -692,20 +873,10 @@ public class OperacionesEntidades {
 			throw new Exception("No hay actividades registradas.");
 		}
 		
-		int indiceActividad = seleccionarActividad(teclado);
-		int opcion = -1;
-		do {
-			System.out.printf("Eliminar a %s? (1 = si | 2 = no): ", actividades[indiceActividad].getTipo());
-			try {
-				opcion = Integer.parseInt(teclado.nextLine());
-			}
-			catch (Exception e) {
-				opcion = -1;
-			}
-		} while (!(opcion == 1 || opcion == 2) || opcion == -1);
-		
-		if (opcion == 1) {
-			actividades[indiceActividad] = null;
+		int indice = seleccionarActividad(teclado);
+
+		if (Validar.opcionSiNo("Eliminar a " + actividades[indice].getTipo(), teclado)) {
+			actividades[indice] = null;
 			return true;
 		}
 		else {
@@ -779,15 +950,24 @@ public class OperacionesEntidades {
 	 * @return Indice de las posiciones que tienen registros de actividades
 	 */
 	protected int[] listaActividades() {
+		return listaActividades(-1);
+	}
+	
+	/**
+	 * Mostrar el listado de actividades, ignorando el indice de la actividad que se envía por parámetro
+	 * @param ignorarIndice Indice de la actividad que se ignora
+	 * @return Indice de las posiciones que tienen registros de actividades
+	 */
+	protected int[] listaActividades(int ignorarIndice) {
 		int[] opcionesActividad = new int[actividades.length];
 		
 		System.out.println("Listado de Actividades");
-		System.out.println("~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
 		
 		for (int i = 0; i < actividades.length; i++) {
-			if (actividades[i] != null) {
+			if (actividades[i] != null && i != ignorarIndice) {
 				opcionesActividad[i] = i + 1;
-				System.out.printf("%d\t|\t%s\t|\t%s\t|\t%s\n", i + 1, actividades[i].getTipo(), new SimpleDateFormat("dd/MM/yyyy").format(actividades[i].getFecha()), new SimpleDateFormat("dd/MM/yyyy").format(actividades[i].getHora()));
+				System.out.printf("%d\t|\t%s\t|\t%s\t|\t%s\n", i + 1, actividades[i].getTipo(), new SimpleDateFormat("dd/MM/yyyy").format(actividades[i].getFecha()), new SimpleDateFormat("HH:mm").format(actividades[i].getHora()));
 			}
 			else {
 				opcionesActividad[i] = 0;
@@ -823,157 +1003,8 @@ public class OperacionesEntidades {
 			}
 		} while (opcionActividadValida);
 		
+		System.out.println();
+		
 		return codigoActividad - 1;
-	}
-	
-	// ENTIDADES
-
-	public String toString() {
-		StringBuilder resultado = new StringBuilder();
-		
-		resultado.append("\nLISTADO DE PERSONAS\n");
-		for (Persona persona : personas) {
-			resultado.append("----------------------------------------------------------\n");
-			
-			if (persona != null) {
-				resultado.append("Nombre: " + persona.getNombre() + "\n");
-				resultado.append("Teléfono: " + persona.getTelefono() + "\n");
-				resultado.append("Correo electrónico: " + persona.getCorreoElectronico() + "\n");
-			}
-			else {
-				resultado.append("NULL\n");
-			}
-		}
-		
-		resultado.append("\nLISTADO DE ORGANIZACIONES\n");
-		for (Organizacion organizacion : organizaciones) {
-			resultado.append("----------------------------------------------------------\n");
-			
-			if (organizacion != null) {
-				resultado.append("Nombre: " + organizacion.getNombre() + "\n");
-				resultado.append("Dirección: " + organizacion.getDireccion() + "\n");
-				resultado.append("Teléfono: " + organizacion.getTelefono() + "\n");
-			}
-			else {
-				resultado.append("NULL\n");
-			}
-		}
-		
-		resultado.append("\nLISTADO DE NEGOCIOS\n");
-		for (Negocio negocio : negocios) {
-			resultado.append("----------------------------------------------------------\n");
-			
-			if (negocio != null) {
-				resultado.append("Título: " + negocio.getTitulo() + "\n");
-				resultado.append("Descripción: " + negocio.getDescripcion() + "\n");
-				resultado.append("Estado: " + negocio.getEstado() + "\n");
-				resultado.append("Valor: " + negocio.getValor() + "\n");
-				resultado.append("Fecha estimada de cierre: " + new SimpleDateFormat("dd/MM/yyyy").format(negocio.getFechaEstimadaCierre()) + "\n");
-				resultado.append("Organización: " + (organizaciones[negocio.getIndiceOrganizacion()] != null ? organizaciones[negocio.getIndiceOrganizacion()].getNombre() : "") + "\n");
-				resultado.append("Persona: " + (personas[negocio.getIndicePersona()] != null ? personas[negocio.getIndicePersona()].getNombre() : "") + "\n");
-			}
-			else {
-				resultado.append("NULL\n");
-			}
-		}
-		
-		resultado.append("\nLISTADO DE ACTIVIDADES\n");
-		for (Actividad actividad : actividades) {
-			resultado.append("----------------------------------------------------------\n");
-			
-			if (actividad != null) {
-				resultado.append("Descripción: " + actividad.getDescripcion() + "\n");
-				resultado.append("Tipo: " + actividad.getTipo() + "\n");
-				resultado.append("Duración: " + actividad.getDuracion() + "\n");
-				resultado.append("Fecha: " + new SimpleDateFormat("dd/MM/yyyy").format(actividad.getFecha()) + "\n");
-				resultado.append("Hora: " + new SimpleDateFormat("HH:mm").format(actividad.getHora()) + "\n");
-				resultado.append("Organización: " + (organizaciones[actividad.getIndiceOrganizacion()] != null ? organizaciones[actividad.getIndiceOrganizacion()].getNombre() : "") + "\n");
-				resultado.append("Persona: " + (personas[actividad.getIndicePersona()] != null ? personas[actividad.getIndicePersona()].getNombre() : "") + "\n");
-				resultado.append("Negocio: " + (negocios[actividad.getIndiceNegocio()] != null ? negocios[actividad.getIndiceNegocio()].getTitulo() : "") + "\n");
-			}
-			else {
-				resultado.append("NULL\n");
-			}
-		}
-		
-		return resultado.toString();
-	}
-
-	/**
-	 * Agregar datos de ejemplos a las entidades
-	 * @throws ParseException
-	 */
-	public void cargarDatosEjemplo() throws ParseException {
-		int indice;
-		
-		// personas
-		indice = 1;
-		personas[indice] = new Persona();
-		personas[indice].setNombre("Tito");
-		personas[indice].setTelefono("784512");;
-		personas[indice].setCorreoElectronico("tito@gmail.com");
-		
-		indice = 3;
-		personas[indice] = new Persona();
-		personas[indice].setNombre("Javier");
-		personas[indice].setTelefono("120457");;
-		personas[indice].setCorreoElectronico("javier@gmail.com");
-		
-		// organizaciones
-		indice = 2;
-		organizaciones[indice] = new Organizacion();
-		organizaciones[indice].setNombre("Creativa");
-		organizaciones[indice].setDireccion("San Salvador");
-		organizaciones[indice].setTelefono("789456");
-		
-		indice = 3;
-		organizaciones[indice] = new Organizacion();
-		organizaciones[indice].setNombre("PokeCenter");
-		organizaciones[indice].setDireccion("Zacatecoluca");
-		organizaciones[indice].setTelefono("324589");
-		
-		// negocios
-		indice = 0;
-		negocios[indice] = new Negocio();
-		negocios[indice].setTitulo("Comida Rápida");
-		negocios[indice].setDescripcion("Gordura máxima");
-		negocios[indice].setEstado("Buenísima");
-		negocios[indice].setValor(2.5);
-		negocios[indice].setFechaEstimadaCierre((new SimpleDateFormat("dd/MM/yyyy")).parse("15/09/2016"));
-		negocios[indice].setIndiceOrganizacion(3);
-		negocios[indice].setIndicePersona(3);
-		
-		indice = 4;
-		negocios[indice] = new Negocio();
-		negocios[indice].setTitulo("Financiero");
-		negocios[indice].setDescripcion("Como ganar rupias");
-		negocios[indice].setEstado("Magía");
-		negocios[indice].setValor(45.73);
-		negocios[indice].setFechaEstimadaCierre((new SimpleDateFormat("dd/MM/yyyy")).parse("19/05/2018"));
-		negocios[indice].setIndiceOrganizacion(2);
-		negocios[indice].setIndicePersona(1);
-		
-		// actividades
-		indice = 3;
-		actividades[indice] = new Actividad();
-		actividades[indice].setDescripcion("Fiesta en la piscina");
-		actividades[indice].setTipo("Infantil");
-		actividades[indice].setDuracion(2);
-		actividades[indice].setFecha((new SimpleDateFormat("dd/MM/yyyy")).parse("22/07/2016"));
-		actividades[indice].setHora((new SimpleDateFormat("HH:mm")).parse("03:20"));
-		actividades[indice].setIndiceOrganizacion(2);
-		actividades[indice].setIndicePersona(3);
-		actividades[indice].setIndiceNegocio(0);
-		
-		indice = 4;
-		actividades[indice] = new Actividad();
-		actividades[indice].setDescripcion("Venta de libros");
-		actividades[indice].setTipo("Todo público");
-		actividades[indice].setDuracion(4);
-		actividades[indice].setFecha((new SimpleDateFormat("dd/MM/yyyy")).parse("05/06/2016"));
-		actividades[indice].setHora((new SimpleDateFormat("HH:mm")).parse("15:45"));
-		actividades[indice].setIndiceOrganizacion(3);
-		actividades[indice].setIndicePersona(1);
-		actividades[indice].setIndiceNegocio(4);
 	}
 }
