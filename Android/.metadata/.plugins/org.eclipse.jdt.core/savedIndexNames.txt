@@ -1,23 +1,3 @@
-INDEX VERSION 1.127+C:\tito.miguel\programas\herramientas\git\repositorios\NextU\Android\.metadata\.plugins\org.eclipse.jdt.core
-3509523518.index
-2899712255.index
-2448071419.index
-3566541198.index
-1844322227.index
-3897901669.index
-483659826.index
-4203653800.index
-3752326370.index
-495250236.index
-2223880838.index
-2324149168.index
-2621175214.index
-1571434179.index
-3234117647.index
-630857861.index
-4085942800.index
-2531666063.index
-1753522414.index
-1656417267.index
-1559060713.index
-3305426765.index
+INDEX VERSION 1.127+F:\tito.miguel\repositorios\NextU\Android\.metadata\.plugins\org.eclipse.jdt.core
+1291209202.index
+1713263869.index
