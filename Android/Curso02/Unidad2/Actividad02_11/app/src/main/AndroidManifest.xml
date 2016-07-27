@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="nextu.android.curso02.unidad02.actividad02_11" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/> <!--Permite a las aplicaciones para abrir sockets de red-->
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/> <!--Permite que una aplicación para enviar mensajes SMS-->
+    <uses-permission android:name="android.permission.VIBRATE"/> <!--Permite el acceso al vibrador-->
+    <uses-permission android:name="android.permission.BLUETOOTH"/> <!--Permite que las aplicaciones se conectan a dispositivos Bluetooth emparejado-->
+    <uses-permission android:name="android.permission.CAMERA"/> <!--Necesaria para poder acceder a la cámara del dispositivo-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> <!--Permite que las aplicaciones accedan a la información acerca de las redes-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> <!--Permite que las aplicaciones accedan a la información acerca de las redes Wi-Fi-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/> <!--Permite que una aplicación para iniciar una llamada de teléfono sin tener que pasar a través de la interfaz de usuario del sintonizador para el usuario para confirmar la llamada-->
+    <uses-permission android:name="android.permission.LOCATION_HARDWARE"/> <!--Permite que una aplicación utilice las funciones de ubicación en hardware, tales como el API geofencing-->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/> <!--Permite que una aplicación lea los datos de los contactos del usuario-->
+
+</manifest>
