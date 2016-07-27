@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Actividad03_03</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_seccion1">Animales</string>
+    <string name="title_seccion2">Películas</string>
+    <string name="title_seccion3">Carros</string>
+    <string name="title_seccion4">Ciudades</string>
+    <string name="title_seccion5">Pokémon</string>
+</resources>
