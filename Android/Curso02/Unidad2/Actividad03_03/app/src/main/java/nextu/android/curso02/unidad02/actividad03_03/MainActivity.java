@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
                         actionBar.getThemedContext(),
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1, new String[]{
-                        getString(R.string.seccion1),
-                        getString(R.string.seccion2),
-                        getString(R.string.seccion3),
-                        getString(R.string.seccion4),
-                        getString(R.string.seccion5)
-                }
+                        getString(R.string.section1),
+                        getString(R.string.section2),
+                        getString(R.string.section3),
+                        getString(R.string.section4),
+                        getString(R.string.section5)
+                    }
                 ),
                 this
         );
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_main);
             textView.setText("Contenido de la sección: " + Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
